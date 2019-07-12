@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="registration_number.css">
     <title>Document</title>
+
 </head>
 <body>
   <header>
@@ -18,30 +19,20 @@
       </div>
       <div style="padding:1em;">
             <button class="button-primary addBtn" on type="button" name="button" id="button" style="width:40%;"  >Add</button>
+            <button class="button-primary resetBtn" on type="button" name="button" id="button" style="width:40%;"  >reset</button>
           </div>
     <div class="">
-            <div class="col-12" style="width:250px;"><h3 style="margin-top:0px;">Choose A Town</h3>
-                <label class="">
-                  <input id="radio" type="radio" name="type" class="regTypeRadio" value="Cape Town">
-                  <span class="label-body">Cape Town</span>
-                </label>
-                <label class="">
-                      <input type="radio" name="type" class="regTypeRadio" value="Bellvile">
-                      <span class="label-body">Bellvile</span>
-                    </label>
-                <label class="">
-                  <input type="radio" name="type" class="regTypeRadio" value="Paarl">
-                  <span class="label-body" >Paarl</span>
-                </label>
-              </div>
               <div style="padding:1em;">
-              <button class="button-primary showBtn" on type="button" name="button" id="button" style="width:40%;"  >Show</button>
+              <div>Select Town:</div> 
+              <button class="button-primary allBtn" on type="button" name="button" id="button" style="width:40%;"  >All</button>
+              <button class="button-primary cptBtn" on type="button" name="button" id="button" style="width:40%;" onclick="cpt(this)" >Cape Town</button>
+              <button class="button-primary blBtn" on type="button" name="button" id="button" style="width:40%;"  >Bellvile</button>
+              <button class="button-primary plBtn" on type="button" name="button" id="button" style="width:40%;"  >Paarl</button>
             </div>
       <div class="row" style="padding:10px;">
         <strong></strong>
-        <ul id="myList" >
 
-              </ul>
+              <span id="myList"> <span class="list"></span></span>
       </div>
     </div>
 </div>
