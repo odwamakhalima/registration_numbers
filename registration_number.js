@@ -1,108 +1,67 @@
-var addBtn = document.querySelector('.addBtn')
-var allBtn = document.querySelector('.allBtn')
-var cptBtn = document.querySelector('.cptBtn')
-var blBtn = document.querySelector('.blBtn')
-var plBtn = document.querySelector('.plBtn')
 var resetBtn = document.querySelector('.resetBtn')
-
 var regUpdate = document.querySelector('.regUpdate')
 var regFinal = document.querySelector('.regFinal')
 var list = document.querySelector('.list')
-var regNames = ''
-var storedReg = JSON.parse(localStorage.getItem('regNames'));
-var allReg = storedReg || {};
-var ol = Object.keys(allReg);
-var reg = document.querySelector('.dropdown')
+var storedReg = JSON.parse(localStorage.getItem('regs2'));
+var capeTown = [];
+var bellville = [];
+var Stellenbosch = [];
+var all = [];
+var regList = {};
 
-//var factoryreg = regFact();
 
-function add(){
-//factoryreg.add()
-    regNames = regUpdate.value
-    var node = document.createElement("LI");
-    var textnode = document.createTextNode(regNames);
-        if(typeof(Storage) !== "undefined") {
-            if ((localStorage.ol)){
-            }
-            if(regNames.startsWith('CA') || regNames.startsWith('CL') || regNames.startsWith('CJ') && regNames.length > 0){
-    localStorage.setItem('regNames',JSON.stringify(allReg))
-    node.appendChild(textnode);
-    
-   }
+function regCapeTown (){
+  document.getElementById("cape").innerHTML = capeTown;
 }
+function regBellville(){
+  document.getElementById("bell").innerHTML = bellville;
 }
-function all(){
-    if (allReg[regNames] === undefined){
-        allReg[regNames] = 0;
-    var node = document.createElement("div");
-    var textnode = document.createTextNode(regNames);
-            if(regNames.startsWith('CA') || regNames.startsWith('CL') || regNames.startsWith('CJ') && regNames.length > 0){
-    node.appendChild(textnode);
-    document.getElementById("myList").appendChild(node);
-            }
-}
-}
-function cpt(evt){
-
-        if(evt.textContent == "Button1"){
-            console.log(ol.filter(word => word.startsWith('CA')))
-        }
-
-
-
-    if (allReg[regNames] === undefined){
-        allReg[regNames] = 0;
-    var node = document.createElement("div");
-    var textnode = document.createTextNode(regNames);
-
-
-            if(regNames.startsWith('CA') && regNames.length > 0){
-    node.appendChild(textnode);
-    document.getElementById("myList").appendChild(node);
-   
-            }  
-}
+function regStellenbosch(){
+  document.getElementById("Stell").innerHTML = Stellenbosch;
 }
 
-function bl(){
-    if (allReg[regNames] === undefined){
-        allReg[regNames] = 0;
-    var node = document.createElement("div");
-    var textnode = document.createTextNode(regNames);
-            if(regNames.startsWith('CL') && regNames.length > 0){
-    node.appendChild(textnode);
-    document.getElementById("myList").appendChild(node);
-    
-            }
+  
+
+
+function add() {
+  var ul = document.getElementById('listitems');
+  var li = document.createElement('div');
+  var regs = document.getElementById('item').value;
+  var regs2 = regs.toUpperCase();
+  document.getElementById('item').value = "";
+
+    if (regs2.startsWith("CA")){
+      if (regList[regs2] === undefined){
+        regList[regs2] = 0;
+      li.appendChild(document.createTextNode(regs2));
+      ul.appendChild(li);
+      capeTown.push(regs2);
+      localStorage.setItem('regs2',JSON.stringify(regList))
+      }
 }
+    else if (regs2.startsWith("CY")){
+      if (regList[regs2] === undefined){
+        regList[regs2] = 0;
+      li.appendChild(document.createTextNode(regs2));
+      ul.appendChild(li);
+      bellville.push(regs2);
+      localStorage.setItem('regs2',JSON.stringify(regList))
+      return;
+      }
+}
+    else if (regs2.startsWith("CL")){
+      if (regList[regs2] === undefined){
+        regList[regs2] = 0;
+      li.appendChild(document.createTextNode(regs2));
+      ul.appendChild(li);
+      Stellenbosch.push(regs2);
+      localStorage.setItem('regs2',JSON.stringify(regList))
+      return;
+}
+    }
+else{
+    alert('Enter a correct registration from given towns!!')
 }
 
-function pl(){
-    if (allReg[regNames] === undefined){
-        allReg[regNames] = 0;
-    var node = document.createElement("div");
-    var textnode = document.createTextNode(regNames);
-
-
-            if(regNames.startsWith('CJ') && regNames.length > 0){
-    node.appendChild(textnode);
-    document.getElementById("myList").appendChild(node);
-    
-            }
-}
 }
 
-
-function clearClick(){
-    localStorage.clear();
-    location.reload()
-    document.getElementById ("myList").innerHTML
-  }
-  resetBtn.addEventListener('click', clearClick)
-
-addBtn.addEventListener('click',add)
-allBtn.addEventListener('click',all)
-cptBtn.addEventListener('click',cpt)
-blBtn.addEventListener('click',bl)
-plBtn.addEventListener('click',pl)
-resetBtn.addEventListener('click',clearClick)

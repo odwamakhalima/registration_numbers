@@ -2,9 +2,11 @@
 
 html,
 body {
+
   margin: 0;
   padding: 1em;
   font-size: 100%;
+
 }
 .header {
   padding: 1em;
@@ -27,6 +29,7 @@ p {
   font-weight: 200;
   line-height: 1.8;
 }
+
 
 .warning{
   color: red;
