@@ -2,7 +2,6 @@ var resetBtn = document.querySelector('.resetBtn')
 var regUpdate = document.querySelector('.regUpdate')
 var regFinal = document.querySelector('.regFinal')
 var list = document.querySelector('.list')
-var storedReg = JSON.parse(localStorage.getItem('regs2'));
 var regList = {};
 var myCiti = [];
 var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_''"\[.*?\]|<>]/gi
@@ -14,6 +13,7 @@ function add() {
   var li = document.createElement('li');
   var regs = document.getElementById('item').value;
   var regs2 = regs.toUpperCase();
+  var storedReg = JSON.parse(localStorage.getItem(regs2));
   document.getElementById('item').value = "";
   var myTest = regex.test(regs2);
 
