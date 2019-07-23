@@ -3,65 +3,69 @@ var regUpdate = document.querySelector('.regUpdate')
 var regFinal = document.querySelector('.regFinal')
 var list = document.querySelector('.list')
 var storedReg = JSON.parse(localStorage.getItem('regs2'));
-var capeTown = [];
-var bellville = [];
-var Stellenbosch = [];
-var all = [];
 var regList = {};
+var myCiti = [];
 
+//var factoryReg = regFact()
 
-function regCapeTown (){
-  document.getElementById("cape").innerHTML = capeTown;
-}
-function regBellville(){
-  document.getElementById("bell").innerHTML = bellville;
-}
-function regStellenbosch(){
-  document.getElementById("Stell").innerHTML = Stellenbosch;
-}
-
-  
 
 
 function add() {
   var ul = document.getElementById('listitems');
-  var li = document.createElement('div');
+  var li = document.createElement('li');
   var regs = document.getElementById('item').value;
   var regs2 = regs.toUpperCase();
   document.getElementById('item').value = "";
 
-    if (regs2.startsWith("CA")){
+//factoryReg.adds()
       if (regList[regs2] === undefined){
         regList[regs2] = 0;
       li.appendChild(document.createTextNode(regs2));
       ul.appendChild(li);
-      capeTown.push(regs2);
-      localStorage.setItem('regs2',JSON.stringify(regList))
+     myCiti.push(regs2);
+     var newCape = myCiti.filter(function(regs2){
+      if(regs2.startsWith('CA')){
+        return true
       }
-}
-    else if (regs2.startsWith("CY")){
-      if (regList[regs2] === undefined){
-        regList[regs2] = 0;
-      li.appendChild(document.createTextNode(regs2));
-      ul.appendChild(li);
-      bellville.push(regs2);
-      localStorage.setItem('regs2',JSON.stringify(regList))
-      return;
+     })
+     var newBell = myCiti.filter(function(regs2){
+      if(regs2.startsWith('CY')){
+        return true
       }
-}
-    else if (regs2.startsWith("CL")){
-      if (regList[regs2] === undefined){
-        regList[regs2] = 0;
-      li.appendChild(document.createTextNode(regs2));
-      ul.appendChild(li);
-      Stellenbosch.push(regs2);
-      localStorage.setItem('regs2',JSON.stringify(regList))
-      return;
-}
-    }
-else{
-    alert('Enter a correct registration from given towns!!')
-}
+     }) 
+     var newStell = myCiti.filter(function(regs2){
+      if(regs2.startsWith('CL')){
+        return true
+      }
+     }) 
+     document.getElementById("cape").innerHTML = newCape;
+     document.getElementById("bell").innerHTML = newBell;
+     document.getElementById("Stell").innerHTML = newStell;
+     }
+//     else if (regs2.startsWith("CY")){
+//       if (regList[regs2] === undefined){
+//         regList[regs2] = 0;
+//       li.appendChild(document.createTextNode(regs2));
+//       ul.appendChild(li);
+//       bellville.push(regs2);
+//       localStorage.setItem('regs2',JSON.stringify(bellville))
+//       return;
+//       }
+// }
+//     else if (regs2.startsWith("CL")){
+//       if (regList[regs2] === undefined){
+//         regList[regs2] = 0;
+//       li.appendChild(document.createTextNode(regs2));
+//       ul.appendChild(li);
+//       Stellenbosch.push(regs2);
+//       localStorage.setItem('regs2',JSON.stringify(Stellenbosch))
+//       console.log(localStorage)
+//       return;
+// }
+//     }
+// else{
+//     alert('Enter a correct registration from given towns!!')
+// }
 
 }
 
