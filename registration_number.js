@@ -5,7 +5,7 @@ var list = document.querySelector('.list')
 var storedReg = JSON.parse(localStorage.getItem('regs2'));
 var regList = {};
 var myCiti = [];
-var regex = /[!@#$%^&*();,.?"^$:^+=${'}`''"\[.*?\]|<>]/gi
+var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_''"\[.*?\]|<>]/gi
 
 //var factoryReg = regFact()
 
@@ -18,30 +18,44 @@ function add() {
   var myTest = regex.test(regs2);
 
   if(regs2.length > 0 && myTest == false){
+    if(regs2.startsWith('CA') || regs2.startsWith('CY') || regs2.startsWith('CL')){
       if (regList[regs2] === undefined){
         regList[regs2] = 0;
       li.appendChild(document.createTextNode(regs2));
       ul.appendChild(li);
      myCiti.push(regs2);
+     console.log(myCiti)
+      }
+ 
      var newCape = myCiti.filter(function(regs2){
       if(regs2.startsWith('CA')){
         return true
       }
+      localStorage.setItem('regs2',JSON.stringify(myCiti))
      })
      var newBell = myCiti.filter(function(regs2){
       if(regs2.startsWith('CY')){
         return true
       }
+      localStorage.setItem('regs2',JSON.stringify(myCiti))
      }) 
      var newStell = myCiti.filter(function(regs2){
       if(regs2.startsWith('CL')){
         return true
       }
-     }) 
+      localStorage.setItem('regs2',JSON.stringify(myCiti))
+     })
      document.getElementById("cape").innerHTML = newCape;
      document.getElementById("bell").innerHTML = newBell;
      document.getElementById("Stell").innerHTML = newStell;
      }
+     else{
+      alert('Enter a correct registration')
     }
+    }
+    else{
+      alert('Enter a correct registration')
+    }
+  console.log(localStorage)
 }
 
