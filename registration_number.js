@@ -2,6 +2,8 @@ var resetBtn = document.querySelector('.resetBtn')
 var regUpdate = document.querySelector('.regUpdate')
 var regFinal = document.querySelector('.regFinal')
 var list = document.querySelector('.list')
+var err = document.querySelector('.error')
+var result = ''
 var regList = {};
 var myCiti = [];
 var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_''"\[.*?\]|<>]/gi
@@ -50,11 +52,13 @@ function add() {
      document.getElementById("Stell").innerHTML = newStell;
      }
      else{
-      alert('Enter a correct registration')
+      result = 'Enter a correct registration'
+      err.innerHTML = result 
     }
     }
     else{
-      alert('Enter a correct registration')
+      result = 'Enter a correct registration' 
+      err.innerHTML = result
     }
   console.log(localStorage)
 }
