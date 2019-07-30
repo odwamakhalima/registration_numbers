@@ -1,65 +1,58 @@
-var resetBtn = document.querySelector('.resetBtn')
+var addBtn = document.querySelector('.addBtn')
+var reBtn = document.querySelector('.reBtn')
 var regUpdate = document.querySelector('.regUpdate')
 var regFinal = document.querySelector('.regFinal')
 var list = document.querySelector('.list')
-var err = document.querySelector('.error')
-var result = ''
-var regList = {};
-var myCiti = [];
-var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_''"\[.*?\]|<>]/gi
+var myText = document.querySelector('.myText')
+var myReg = document.querySelector('.myReg')
+var storedRegs = JSON.parse(localStorage.getItem('regs'));
+var dropDown = document.querySelector(".myReg")
+var reglist = document.querySelector("#listitems")
+var theError = document.querySelector('.error')
 
-//var factoryReg = regFact()
+var factoryReg = regFact(storedRegs)
 
-function add() {
-  var ul = document.getElementById('listitems');
+addBtn.addEventListener('click', function() {
+  dropDown.value = ''
+  factoryReg.input(myText.value)
+  localStorage.setItem('regs',JSON.stringify(factoryReg.output()))
+  var loc = Object.keys(factoryReg.output())
+  reglist.innerHTML = ''
+  theError.innerHTML = factoryReg.error()
+  for(var j = 0;j<loc.length;j++){
+    add(loc[j])
+   
+  }
+})
+
+
+
+function add(reg2) {
   var li = document.createElement('li');
-  var regs = document.getElementById('item').value;
-  var regs2 = regs.toUpperCase();
-  var storedReg = JSON.parse(localStorage.getItem(regs2));
-  document.getElementById('item').value = "";
-  var myTest = regex.test(regs2);
+  var lol = document.createTextNode(reg2)
+  li.appendChild(lol)
+  var myLol = document.getElementById('listitems').appendChild(li)
 
-  if(regs2.length > 0 && myTest == false){
-    if(regs2.startsWith('CA') || regs2.startsWith('CY') || regs2.startsWith('CL')){
-      if (regList[regs2] === undefined){
-        regList[regs2] = 0;
-      li.appendChild(document.createTextNode(regs2));
-      ul.appendChild(li);
-     myCiti.push(regs2);
-     console.log(myCiti)
-      }
- 
-     var newCape = myCiti.filter(function(regs2){
-      if(regs2.startsWith('CA')){
-        return true
-      }
-      localStorage.setItem('regs2',JSON.stringify(myCiti))
-     })
-     var newBell = myCiti.filter(function(regs2){
-      if(regs2.startsWith('CY')){
-        return true
-      }
-      localStorage.setItem('regs2',JSON.stringify(myCiti))
-     }) 
-     var newStell = myCiti.filter(function(regs2){
-      if(regs2.startsWith('CL')){
-        return true
-      }
-      localStorage.setItem('regs2',JSON.stringify(myCiti))
-     })
-     document.getElementById("cape").innerHTML = newCape;
-     document.getElementById("bell").innerHTML = newBell;
-     document.getElementById("Stell").innerHTML = newStell;
-     }
-     else{
-      result = 'Enter a correct registration'
-      err.innerHTML = result 
-    }
-    }
-    else{
-      result = 'Enter a correct registration' 
-      err.innerHTML = result
-    }
-  console.log(localStorage)
 }
 
+dropDown.onchange = function(){
+  var regDrop = dropDown.value
+  var regtown = Object.keys(factoryReg.towns(regDrop));
+  reglist.innerHTML = ""
+  for (var i=0; i<regtown.length; i++){
+    add(regtown[i])
+  }
+}
+
+window.onload = function(){
+  var show = Object.keys(factoryReg.output());
+  reglist.innerHTML = ''
+  for(var y = 0;y<show.length;y++){
+    add(show[y])
+  }
+}
+
+reBtn.addEventListener('click', function() {
+  localStorage.clear()
+  location.reload()
+})

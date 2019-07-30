@@ -1,39 +1,61 @@
-// function regFact(){
-//     var capeTown = [];
-//     var bellville = [];
-//     var Stellenbosch = [];
-//     var regList = {};
-//     var regs = ''
-   
+function regFact(storedReg){
+    var regList = storedReg || {};
+    var error = ''
+    var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_;''"\[.*?\]|<>]/gi
 
-//     function stored(regs){
-//         var regs2 = regs.toUpperCase();
-//         if (regs2.startsWith("CA") ){
-//             if (regList[regs2] === undefined){
-//               regList[regs2] = 0;
-//               capeTown.push(regs2);
-//             }
-//             return capeTown
-//         }
-//         else if (regs2.startsWith("CY") ){
-//             if (regList[regs2] === undefined){
-//               regList[regs2] = 0;
-//               bellville.push(regs2);
-//             }
-//             return bellville
-//         }
-//         else if (regs2.startsWith("CL") ){
-//             if (regList[regs2] === undefined){
-//               regList[regs2] = 0;
-//               Stellenbosch.push(regs2);
-//             }
-//         }
-//         return Stellenbosch
-//     }
+    function newObj(){
+        var myKeys = Object.keys(regList)
+    }
+
+    function myError(){
+        return error
+    }
+
+    function stored(regs){
+        error = ''
+        var reg2 = regs.toUpperCase().trim()
+        var myTest = regex.test(reg2);
+        if(reg2.length > 0 && myTest == false){
+            if(reg2.startsWith('CA ') || reg2.startsWith('CY ') || reg2.startsWith('CL ')){
+              if (regList[reg2] === undefined){
+                regList[reg2] = 0;
+              }
+              else{
+                  error = 'Already Been Added'
+              }
+            }
+            else{
+                error = 'Registration Number Not From Given Locations'
+            }
+        }
+        else{
+            error = 'Not A Valid Registration Number'
+        }
+    }
+    
+
+    function theReg(first){
+        var theRegs = Object.keys(regList)
+        var myObj = {}
+        for(var i = 0;i<theRegs.length;i++){
+            if(theRegs[i].startsWith(first)){
+                myObj[theRegs[i]] =0 ;
+            }
+        } //console.log (myObj)
+        return (myObj)
+        //console.log(myObj)
+    }
 
 
-//     return {
-//         adds: stored,
-//         //town: regTowns,
-//     }
-// }
+    function show(){
+        var str = regList
+        return str
+    }
+    return {
+        input: stored,
+        error: myError,
+        towns: theReg,
+        obj: newObj,
+        output: show,  
+    }
+}
