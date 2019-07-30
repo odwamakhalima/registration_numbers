@@ -1,7 +1,7 @@
 function regFact(storedReg){
     var regList = storedReg || {};
     var error = ''
-    var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_;''"\[.*?\]|<>]/gi
+    var regex = /[!@#$%^&*();,.?"^$:^+=${'}`_;''"\[.*?\]|<>]/i
 
     function newObj(){
         var myKeys = Object.keys(regList)
