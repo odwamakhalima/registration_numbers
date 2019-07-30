@@ -4,44 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="registration_number.css">
     <title>Document</title>
-
 </head>
-<body>
+<style>
+body {
+  margin: 0;
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+.header {
+    padding: 1em;
+    background-color: grey;
+}
+
+.main {
+    padding: 1em;
+}
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+.content {
+    padding: 9.8em;
+}
+.button{
+    color: #000;
+    text-align: center;
+}
+.footer {
+    background-color: grey;
+    padding: 1em;
+}
 
 
-  <div>
-  <div><img src="giphy.gif" ></div>
-    <div>
-    <label id="name">Enter Registration Number:</label><br>
-    <input type="text" name="town" value="" id="item" class="myText" onfocus="this.value=''" style="width:300px;height:45px;" placeholder="e.g CA 126"><br>
-   <button button id="button" type="button" class="button-primary addBtn" style="width:106px;">Add</button>
-   <button button id="button" type="button" class="button-primary reBtn" style="width:106px;">Reset</button><br> 
-  </div>
-  
-  <div class="dropdown" style="padding:1em;">
-     <select id="regMy" class="myReg">
-        <option value="" name='regTowns'>Show All</option>
-      <option value="CA" name='regTowns'>Cape Town</option>
-      <option value="CY" name='regTowns'>Bellville</option>
-      <option value="CL" name='regTowns'>Stellenbosch</option>
-    </select>
-    <div class="dropdown-content">
-    </div>
-  </div>
-  <div class="error" style></div>
-  <section id="regShow">
-    <div id="regNumbers"></div><br>
-    <ul id ="listitems"></ul><br>
-    
-  </section>
 
-  
-  </div>
- 
-</div>
-  </body>
-<script src="regFact.js"></script>
-<script src="registration_number.js" charset="utf-8"></script>
+</style>
+<body style="margin-top:1px;margin-left: 1px;margin-bottom: 1px;margin-right: 1px;">
+        <div class="container">
+                <div class="header" >
+                    <h1 style="text-align:center;">ODWA MAKHALIMA</h1>
+                </div>
+                <div class="main" style="padding-top:20px;padding-bottom:26px;">
+                    <div class="content" >
+                        <h2>Registration App</h2>
+                        <button type="button"> <h3 style="text-align:center;"><a href='https://odwamakhalima.github.io/registration_numbers/' target="_blank">Reg App</a></h3></button>
+                        <button type="button"> <h3 style="text-align:center;"><a href="https://odwamakhalima.github.io/registration_numbers/test.html"target="_blank">Reg App Test</a></h3></button>
+                    </div>
+                </div>
+
+</body>
 </html>
