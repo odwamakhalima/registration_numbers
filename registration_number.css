@@ -29,7 +29,7 @@ ul {
 }
 
 li{
-  border-radius: 25px;
+  border-radius: 10px;
   border-style: solid;
   border-color: grey;
   background: yellow;
@@ -38,6 +38,8 @@ li{
   height: 24px; 
   list-style-type: none;
   float: left;
+  margin-right: 10px;
+  font-weight: 900;
 }
 
 .error{

@@ -15,7 +15,7 @@ function regFact(storedReg){
         error = ''
         var reg2 = regs.toUpperCase().trim()
         var myTest = regex.test(reg2);
-        if(reg2.length > 0 && myTest == false){
+        if(reg2.length > 0 && reg2.length <= 10 && myTest == false){
             if(reg2.startsWith('CA ') || reg2.startsWith('CY ') || reg2.startsWith('CL ')){
               if (regList[reg2] === undefined){
                 regList[reg2] = 0;
