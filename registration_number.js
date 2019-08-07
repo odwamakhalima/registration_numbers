@@ -26,7 +26,6 @@ addBtn.addEventListener('click', function() {
 })
 
 
-
 function add(reg2) {
   var li = document.createElement('li');
   var lol = document.createTextNode(reg2)
