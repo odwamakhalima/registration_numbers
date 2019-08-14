@@ -11,7 +11,11 @@ var reglist = document.querySelector("#listitems")
 var theError = document.querySelector('.error')
 
 var factoryReg = regFact(storedRegs)
-
+function clearError() {
+	setTimeout(function () {
+		theError.innerHTML = "";
+	}, 2000);
+}
 addBtn.addEventListener('click', function() {
   dropDown.value = ''
   factoryReg.input(myText.value)
@@ -19,6 +23,7 @@ addBtn.addEventListener('click', function() {
   var loc = Object.keys(factoryReg.output())
   reglist.innerHTML = ''
   theError.innerHTML = factoryReg.error()
+  clearError()
   for(var j = 0;j<loc.length;j++){
     add(loc[j])
    
@@ -31,7 +36,6 @@ function add(reg2) {
   var lol = document.createTextNode(reg2)
   li.appendChild(lol)
   var myLol = document.getElementById('listitems').appendChild(li)
-
 }
 
 dropDown.onchange = function(){
